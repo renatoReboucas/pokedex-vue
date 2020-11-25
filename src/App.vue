@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="container is-max-widescreen">
-    <h4 class="is-size-3">Pokedex</h4>
+  <div id="app" class="container">
+    <div class="columns is-mobile is-half">
+      <h4 class="is-size-3 title">Pokedex</h4>
+    </div>
     <hr>
-    <div class="column is-half is-offset-one-quarter">
+    <div class="columns is-half is-offset-one-quarter is-mobile">
     <div class="control filter">
       <input 
       type="text" 
@@ -13,10 +15,13 @@
     >
     <button class="button is-success btn" @click="buscar()" >Buscar</button>
     </div>
+    <br>
     </div>
     <div class="" v-for="(poke, index) in filteredPokemons" :key="poke.url">
       <!-- <div class="column is-half is-offset-one-quarter"> -->
+        <div class="section-card">
         <Pokemon :name="poke.name" :url="poke.url" :num="index + 1" />
+        </div>
       <!-- </div> -->
     </div>
   </div>
@@ -101,5 +106,21 @@ export default {
 }
 .btn{
   border-radius: 0 4px 4px 0 !important;
+}
+/* .section-card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+} */
+@media(max-width: 500px){
+  #app{
+    /* flex-wrap: nowrap; */
+  }
+  .title{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 }
 </style>
